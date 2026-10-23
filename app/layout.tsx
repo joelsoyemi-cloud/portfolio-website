@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const siteOrigin = process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? "https://" + process.env.VERCEL_PROJECT_PRODUCTION_URL
+    : "https://joel-spatial-portfolio.neonokapi16.chatgpt.site");
+
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    "https://joel-spatial-portfolio.neonokapi16.chatgpt.site",
-  ),
+  metadataBase: new URL(siteOrigin),
   title: "Joel Soyemi — Frontend Developer",
   description:
     "Frontend developer and Computer Science student in Lagos. Explore my projects, playful interactions, and approach to building for the web.",

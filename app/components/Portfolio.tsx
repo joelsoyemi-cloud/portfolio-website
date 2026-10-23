@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import Icon, { Asterisk } from "./Icon";
@@ -29,104 +30,21 @@ const navItems = [
 
 function ProjectArtwork({ project }: { project: Project }) {
   return (
-    <div
-      className={"project-artwork art-" + project.id}
-      role="img"
-      aria-label={"Illustrated project study for " + project.name}
-    >
-      <div className="art-grain" aria-hidden="true" />
-      {project.id === "byte" ? (
-        <div className="byte-window" aria-hidden="true">
-          <div className="mini-browser">
-            <i />
-            <i />
-            <i />
-            <span>THE CAMPUS, IN FOCUS.</span>
-          </div>
-          <div className="byte-masthead">
-            The Daily Byte<span>STORIES THAT MATTER.</span>
-          </div>
-          <div className="byte-nav">
-            <span>Campus</span>
-            <span>Culture</span>
-            <span>Opinions</span>
-            <b>THE JOURNAL ↗</b>
-          </div>
-          <div className="byte-content">
-            <div>
-              <span className="mini-label">A PLACE FOR YOUR VOICE</span>
-              <strong>
-                A campus.
-                <br />A thousand
-                <br />
-                <em>stories.</em>
-              </strong>
-            </div>
-            <div className="byte-art">
-              <i />
-              <i />
-              <span>
-                READ.
-                <br />
-                THINK.
-                <br />
-                SHARE.
-              </span>
-            </div>
-          </div>
-          <div className="byte-rule" />
-        </div>
-      ) : project.id === "nynth" ? (
-        <div className="nynth-window" aria-hidden="true">
-          <div className="nynth-masthead">
-            <span>NYNTH® WORLD</span>
-            <span>THE JOURNAL ↗</span>
-          </div>
-          <span className="nynth-edition">FASHION / MUSIC / CULTURE</span>
-          <div className="fabric-study">
-            <i />
-            <i />
-            <i />
-          </div>
-          <strong>
-            STAY
-            <br />
-            <em>ABOVE.</em>
-          </strong>
-          <div className="nynth-bottom">
-            <span>A DIFFERENT POINT OF VIEW.</span>
-            <span>EST. IN CULTURE</span>
-          </div>
-        </div>
-      ) : (
-        <div className="cgpa-window" aria-hidden="true">
-          <div className="cgpa-top">
-            <span className="mini-app-icon">
-              <Icon name="code" />
-            </span>
-            <span>
-              Small tool.
-              <br />
-              <b>Clearer numbers.</b>
-            </span>
-          </div>
-          <div className="cgpa-display">
-            <span>CGPA, SIMPLIFIED.</span>
-            <strong>
-              Make every
-              <br />
-              <em>credit count.</em>
-            </strong>
-          </div>
-          <div className="cgpa-formula">
-            <span>Σ (grade points × units)</span>
-            <i />
-            <span>Σ credit units</span>
-          </div>
-          <span className="cgpa-python">PYTHON / ACADEMIC TOOL</span>
-        </div>
-      )}
-      <span className="art-index">{project.number} / PROJECT STUDY</span>
+    <div className="project-artwork">
+      <div className="project-browser" aria-hidden="true">
+        <span className="browser-dots"><i /><i /><i /></span>
+        <span className="project-domain">{new URL(project.site).hostname}</span>
+        <Icon name="upRight" />
+      </div>
+      <Image
+        className="project-screenshot"
+        src={project.preview}
+        alt={project.name + " homepage screenshot"}
+        width={1348}
+        height={926}
+        sizes="(max-width: 600px) calc(100vw - 48px), (max-width: 820px) calc((100vw - 68px) / 2), 560px"
+        loading="lazy"
+      />
       <div className="art-glare" aria-hidden="true" />
     </div>
   );
@@ -522,13 +440,13 @@ export default function Portfolio() {
               >
                 <a
                   className="project-image-link"
-                  href={project.source}
+                  href={project.site}
                   target="_blank"
                   rel="noreferrer"
                   aria-label={
-                    "View " +
-                    project.name +
-                    " source on GitHub, opens in a new tab"
+                    "Visit " + project.name +
+                    (project.privatePreview ? " private preview, access code required" : " website") +
+                    ", opens in a new tab"
                   }
                 >
                   <ProjectArtwork project={project} />
@@ -536,40 +454,50 @@ export default function Portfolio() {
                     <Icon name="upRight" />
                   </span>
                 </a>
-                <div className="project-caption">
-                  <div>
-                    <span className="project-type">
-                      {project.category.toUpperCase()} / {project.number}
-                    </span>
-                    <h3>
-                      <a href={project.source} target="_blank" rel="noreferrer">
-                        {project.name}
-                        <span className="sr-only">
-                          {" "}
-                          source on GitHub, opens in a new tab
-                        </span>
-                      </a>
-                    </h3>
+                <div className="project-details">
+                  <div className="project-caption">
+                    <div>
+                      <span className="project-type">
+                        {project.category.toUpperCase()} / {project.number}
+                      </span>
+                      <h3>
+                        <a href={project.site} target="_blank" rel="noreferrer">
+                          {project.name}
+                          <span className="sr-only">
+                            {" "}
+                            website, opens in a new tab
+                          </span>
+                        </a>
+                      </h3>
+                    </div>
+                    <a
+                      className="project-source"
+                      href={project.source}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={
+                        "View " +
+                        project.name +
+                        " source on GitHub, opens in a new tab"
+                      }
+                    >
+                      <Icon name="github" />
+                    </a>
                   </div>
-                  <a
-                    className="project-source"
-                    href={project.source}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={
-                      "View " +
-                      project.name +
-                      " source on GitHub, opens in a new tab"
-                    }
-                  >
-                    <Icon name="github" />
-                  </a>
-                </div>
-                <p className="project-description">{project.description}</p>
-                <div className="project-tags">
-                  {project.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
+                  <p className="project-description">{project.description}</p>
+                  <div className="project-tags">
+                    {project.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                  <div className="project-actions">
+                    <a className="project-live" href={project.site} target="_blank" rel="noreferrer">
+                      {project.privatePreview ? "View preview" : "Visit site"}
+                      <Icon name="upRight" />
+                      <span className="sr-only"> for {project.name}, opens in a new tab</span>
+                    </a>
+                    {project.privatePreview && <span className="project-access">Private preview · access code required</span>}
+                  </div>
                 </div>
               </article>
             ))}

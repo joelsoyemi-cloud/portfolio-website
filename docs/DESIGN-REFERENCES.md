@@ -52,3 +52,13 @@ There is no scroll hijacking or custom cursor. Important content is server-rende
 - [Three.js documentation](https://threejs.org/docs/)
 
 Three.js documents the higher per-pixel cost of physical materials and recommends an environment map. This scene uses an environment map, bounded pixel density, a single main physical surface, deferred loading, and a render loop that stops when it is unnecessary.
+
+## Project screenshot sources
+
+The work cards use browser captures from the actual project homepages, taken on 23 October 2026 and converted to WebP without changing their design. They are not generated concept images.
+
+- The Daily Byte: https://the-dailybyte-nine.vercel.app/
+- NYNTH Journal: https://nynth-mockup.vercel.app/ (the static editorial demo; source is NYNTH-MOCKUP).
+- Academy Press: https://acad-press-pratice.vercel.app/ (access-code preview, entered through the browser’s secure authentication flow).
+
+Only the website presentation is captured. The Academy Press access code is not stored in source, URLs, screenshots, or public copy. All three cards retain a separate source link.
