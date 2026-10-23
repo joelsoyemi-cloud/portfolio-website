@@ -62,3 +62,15 @@ The work cards use browser captures from the actual project homepages, taken on 
 - Academy Press: https://acad-press-pratice.vercel.app/ (access-code preview, entered through the browser’s secure authentication flow).
 
 Only the website presentation is captured. The Academy Press access code is not stored in source, URLs, screenshots, or public copy. All three cards retain a separate source link.
+
+## Expanded creative playground
+
+Play now moves from a large generative field into two hands-on studies, followed by the original microinteraction lab. The particle field introduces a darker forest surface; a clay/lime typographic poster and a lilac gravity scene add controlled color variation. These are original procedural experiments, with no borrowed project imagery or generated bitmap assets.
+
+| Experiment | Visitor input | Visible result |
+| --- | --- | --- |
+| Particle universe | Pointer, tap/Enter, shape buttons, Remix | A deforming sphere, ribbon, or lattice; scatter and a new edition |
+| Type as material | Text, typeface, palette, stretch, new prompt | A live typographic composition |
+| A little weight | Drop, drag/release, arrow keys, gravity, shake/reset | Bounded pebbles with gravity, collisions, bounce, and a static arrangement when paused |
+
+Canvas 2D keeps the new experiments independent of WebGL availability. Their continuous motion follows the existing global preference and stops offscreen. The gravity toy is a small custom circle simulation rather than an engineering model.

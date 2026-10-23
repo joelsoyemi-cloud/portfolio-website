@@ -25,7 +25,10 @@ Production output is static. Preview the exported directory with your static hos
 - Update the projects and verified contact links in `app/lib/content.ts`.
 - Edit the page in `app/components/Portfolio.tsx`.
 - The lazy-loaded 3D scene is in `app/components/SpatialScene.tsx`.
-- The interaction lab is in `app/components/MotionStudy.tsx`.
+- The particle universe, type poster, and gravity sandbox are in `app/components/CreativePlayground.tsx`.
+- Canvas sizing, visibility, and animation-frame cleanup are shared in `app/components/useCanvasSurface.ts`.
+- The smaller interaction lab is in `app/components/MotionStudy.tsx`.
+- Playground layout and controls are in `app/playground.css`.
 - Styles and responsive breakpoints are in `app/globals.css`.
 - Metadata lives in `app/layout.tsx`. On Vercel, social images use its production domain automatically. An optional public `NEXT_PUBLIC_SITE_URL` can override the origin for another host.
 
@@ -51,7 +54,15 @@ The sculpture supports drag, arrow-key rotation, and Home to reset. Jade, Chrome
 
 The motion toggle defaults to the system's reduced-motion preference and saves an explicit choice locally. It stops decorative animation, resets pointer tilt, and pauses the 3D render loop. Offscreen and background scenes also stop their render loop. Pixel density and geometry detail are capped for smaller screens.
 
-The lab includes magnetic attraction, perspective tilt, and a draggable spring interaction. Its tabs support Left/Right, Home, and End. The experiments can also be triggered with Enter or Space. Project filtering and contact links remain usable with motion off.
+Play now includes three larger creative experiments:
+
+- **Particle universe:** a 216-point field with Orbit, Ribbon, and Lattice shapes, pointer distortion, tap/keyboard scattering, and remixed editions.
+- **Type poster:** editable text, editorial/grotesk type, three palettes, a stretch slider, and rotating creative prompts.
+- **Gravity sandbox:** a bounded circle-physics toy with dragging/throwing, adjustable gravity, shake/reset controls, keyboard drops and nudges, and an 18-pebble limit.
+
+The two new canvases use the browser's 2D renderer, so they work independently of the hero's WebGL scene. Their animation frames stop offscreen, in a background tab, or when global motion is paused. Explicit controls can repaint a static frame while paused. Canvas pixel density is capped at 1.5; animation uses a bounded time step, and physics state stays outside React renders. No dependencies, account, network calls, or persistent visitor data were added.
+
+The smaller lab includes magnetic attraction, perspective tilt, and a draggable spring interaction. Its tabs support Left/Right, Home, and End. The experiments can also be triggered with Enter or Space. Project filtering and contact links remain usable with motion off.
 
 Contact links use the verified GitHub profile by default. To use email instead, set `contact.email` in `app/lib/content.ts` to an address you intend to publish. Copy link reports a useful fallback when clipboard access is denied. There is no contact-form backend.
 

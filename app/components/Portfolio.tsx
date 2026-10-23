@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import Icon, { Asterisk } from "./Icon";
 import MotionStudy from "./MotionStudy";
+import CreativePlayground from "./CreativePlayground";
 import { contact, filters, materials, projects } from "../lib/content";
 import type { Project, ProjectFilter, SculptureMaterial } from "../lib/content";
 
@@ -585,18 +586,24 @@ export default function Portfolio() {
               LONG WAY
             </span>
             <h2 id="play-title">
-              Serious about
+              A serious
               <br />
-              <em>the little things.</em>
+              <em>case for play.</em>
             </h2>
             <p>
-              A button that leans in. A card with a new angle. A small moment of
-              delight.
+              Bend a word. Scatter a small universe. Throw something around.
+              A few ideas that made it out of my sketchbook.
             </p>
             <p>
-              I like exploring how an interface can feel as good as it looks. Go
-              on, give it a try.
+              Touch, type, drag, and see what happens. This part of the portfolio
+              is yours to mess with.
             </p>
+          </div>
+          <CreativePlayground motion={motion} />
+          <div className="micro-lab-copy" data-reveal>
+            <span className="eyebrow">AND THEN THERE ARE THE SMALL DETAILS.</span>
+            <h3>A little pull.<br /><em>A new perspective.</em></h3>
+            <p>Three small studies in how an interface responds to you. Because the little things count, too.</p>
             <div className="play-line" aria-hidden="true">
               <svg viewBox="0 0 260 75">
                 <path d="M4 40C38 3 59 73 91 39S147 3 176 37s51 29 68-4m-15 1 15-1 3 16" />

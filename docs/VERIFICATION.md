@@ -41,3 +41,19 @@ The production export was checked again after the screenshot update:
 - The Next.js optimized static build and its TypeScript check pass.
 
 Vercel project access is currently blocked by the connected account’s team authorization. No Vercel portfolio deployment has been reported as successful.
+
+## Expanded Play section — 23 October 2026
+
+Story: visitors enter Play, choose or manipulate an experiment, and see the result directly in the browser. All new state is local to the component; there is no API, database, account, or external service boundary.
+
+Confirmed on the production static export:
+
+- Orbit, Ribbon, and Lattice controls update the selected shape. Pointer input bends the field; clicking and Enter trigger scattering. Remix advances the edition and scatter count.
+- Editing poster text, choosing Grotesk and Electric, and using End on the stretch range updates the poster label, palette, typeface, and 115% stretch. A 22-character unbroken string wraps inside the poster. The new-thought button replaces the text.
+- Pointer and keyboard drops increase the pebble count. Gravity strength supports keyboard adjustment, and arrow keys nudge the newest pebble. Shake changes the arrangement; Reset restores five pebbles. At 18, the add button is disabled.
+- The global motion toggle pauses continuous animation; shape changes, poster edits, scattering, and static pebble arrangement remain available.
+- Both Canvas 2D surfaces render at nonzero dimensions in this browser. Their shared lifecycle explicitly cancels frames on cleanup, when outside the viewport, and when the document is hidden; density is capped at 1.5.
+- The new layout has no horizontal document overflow at 320, 390, and 768-pixel responsive frame widths. Desktop was checked at a 1363-pixel frame width.
+- The optimized Next.js build and TypeScript check pass.
+
+The existing hero WebGL and physical iOS/Android device checks remain outstanding. Desktop browser checks and responsive frame checks do not establish touch-device frame-rate performance.
