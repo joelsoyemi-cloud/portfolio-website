@@ -1,16 +1,5 @@
-"use Client"
-import Body from "./component/body";
-import Header from "./component/Header";
-import Project from "./component/project";
-import Footer from "./component/Footer";
+import Portfolio from "./components/Portfolio";
 
 export default function Home() {
-  return (
-    <>
-    <Header/>
-    <Body/>
-    <Project/>
-    <Footer/>
-    </>
-  );
+  return <Portfolio />;
 }

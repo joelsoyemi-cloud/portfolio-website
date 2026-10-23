@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Joel Soyemi — Spatial Portfolio
 
-## Getting Started
+A personal portfolio built with Next.js, React, TypeScript, and Three.js. Mint glass controls, an interactive sculpture, real project links, and a small interaction lab.
 
-First, run the development server:
+## Run
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Use Node.js 20.9 or later.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    npm ci
+    npm run dev
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open http://localhost:3000. The development wrapper translates generic preview host flags into Next.js flags and uses Webpack for development compatibility.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Check and build
 
-## Learn More
+    npm run typecheck
+    npm run build
 
-To learn more about Next.js, take a look at the following resources:
+The project exports a static website to `out/`. Deploy that directory to a static host, or import the repository into Vercel as a Next.js project. No environment variables, database, or paid service are required.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Production output is static. Preview the exported directory with your static host's local tooling.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Content
 
-## Deploy on Vercel
+- Update the projects and verified contact links in `app/lib/content.ts`.
+- Edit the page in `app/components/Portfolio.tsx`.
+- The lazy-loaded 3D scene is in `app/components/SpatialScene.tsx`.
+- The interaction lab is in `app/components/MotionStudy.tsx`.
+- Styles and responsive breakpoints are in `app/globals.css`.
+- Metadata lives in `app/layout.tsx`. Update its origin if deploying to another domain.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Project visuals are original illustrative studies, not screenshots or claims that these are the projects' exact current interfaces. The Daily Byte, NYNTH Studio, and CGPA Calculator link to their real source repositories. NYNTH's project is an editorial frontend; this portfolio does not imply that its admin backend is complete.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Interactions and accessibility
+
+The sculpture supports drag, arrow-key rotation, and Home to reset. Jade, Chrome, and Frost change its material. A CSS sculpture remains available when WebGL cannot start; its material choices and keyboard controls still work.
+
+The motion toggle defaults to the system's reduced-motion preference and saves an explicit choice locally. It stops decorative animation, resets pointer tilt, and pauses the 3D render loop. Offscreen and background scenes also stop their render loop. Pixel density and geometry detail are capped for smaller screens.
+
+The lab includes magnetic attraction, perspective tilt, and a draggable spring interaction. Its tabs support Left/Right, Home, and End. The experiments can also be triggered with Enter or Space. Project filtering and contact links remain usable with motion off.
+
+Contact links use the verified GitHub profile by default. To use email instead, set `contact.email` in `app/lib/content.ts` to an address you intend to publish. Copy link reports a useful fallback when clipboard access is denied. There is no contact-form backend.
+
+For a deliberate low-graphics view, append `?graphics=off` to the URL.
+
+## Design references and verification
+
+See [the reference and motion notes](docs/DESIGN-REFERENCES.md) and [verification results](docs/VERIFICATION.md).
+
+The implementation uses original code and artwork. Pinterest references were found through public search results; Pinterest denied access to full pin pages in this browser, so their full motion was not inspected or copied.
